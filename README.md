@@ -36,29 +36,39 @@ There are some things you will need before you can get started developing with *
 4. Install back-end dependencies
 
     ```composer install```
-    
+
 5. Install front-end dependencies
 
     ```npm install```
-    
+
 6. Generate application key (this will help with encryption and security)
 
     ```php artisan key:generate```
-    
+
 7. Create database
 
     1. Open a terminal window, and access your MySQL
-    
+
     ```sudo mysql -u root -p;```
+
     2. Create your database and assign permissions
+
     ```CREATE DATABASE bloggist;```
+
     ```CREATE USER 'bloggist'@'localhost' IDENTIFIED BY 'SET_YOUR_PASSWORD_HERE';```
+
     ```ALTER USER 'bloggist'@'localhost' IDENTIFIED WITH mysql_native_password BY 'SET_YOUR_PASSWORD_HERE';```
+
     ```GRANT ALL PRIVILEGES ON bloggist.* to 'bloggist'@'localhost' WITH GRANT OPTION;```
+
     ```FLUSH PRIVILEGES;```
+
     ```exit;```
+
  8. Add your database credentials to Bloggist.
+
     Open your *.env* file, and modify the following lines
+
     ```
     DB_CONNECTION=mysql
     DB_HOST=127.0.0.1
@@ -68,6 +78,9 @@ There are some things you will need before you can get started developing with *
     DB_PASSWORD=SET_YOUR_PASSWORD_HERE
     ```
 9. Run migrations (this will create your database tables)
+
     ```php artisan migrate```
+    
 10. Generate front-end assets
+
     ```npm run build``` or ```npm run dev``` if you want live reload
