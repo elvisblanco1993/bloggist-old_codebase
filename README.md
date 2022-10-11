@@ -22,19 +22,33 @@ There are some things you will need before you can get started developing with *
 ## Getting **Bloggist** up and running in your machine
 
 1. Clone the repository into your development environment
+
     ```git clone https://github.com/elvisblanco1993/bloggist.git```
+
 2. Move into the project directory
+
     ```cd bloggist```
+
 3. Create the environment file.
+
     ```cp .env.example .env``` for UNIX based systems, and ```copy .env.example .env``` on MS Windows
+
 4. Install back-end dependencies
+
     ```composer install```
+    
 5. Install front-end dependencies
+
     ```npm install```
+    
 6. Generate application key (this will help with encryption and security)
+
     ```php artisan key:generate```
+    
 7. Create database
+
     1. Open a terminal window, and access your MySQL
+    
     ```sudo mysql -u root -p;```
     2. Create your database and assign permissions
     ```CREATE DATABASE bloggist;```
