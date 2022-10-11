@@ -1,66 +1,59 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Bloggist
+Welcome to the main repository for **Bloggist**, the minimalistic blogging platform for everyone.
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Please read along to setup your own **Bloggist** instance.
 
-## About Laravel
+## Before you start
+There are some things you will need before you can get started developing with **Bloggist**.
+- Apache/Nginx (web server)
+- MySQL server (database server)
+- [VS Code][vscode] (code editor)
+- [Beekeeper Studio][beekeeper] (database management software)
+- [Git][git] (version control management)
+- [Composer][composer] (PHP package manager)
+- [NPM][npm] (JS package manager)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+[beekeeper]: https://www.beekeeperstudio.io/get
+[vscode]: https://code.visualstudio.com/Download
+[git]: https://git-scm.com/downloads
+[composer]: https://getcomposer.org/download/
+[npm]: https://nodejs.org/en/
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Getting **Bloggist** up and running in your machine
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+1. Clone the repository into your development environment
+    ```git clone https://github.com/elvisblanco1993/bloggist.git```
+2. Move into the project directory
+    ```cd bloggist```
+3. Create the environment file.
+    ```cp .env.example .env``` for UNIX based systems, and ```copy .env.example .env``` on MS Windows
+4. Install back-end dependencies
+    ```composer install```
+5. Install front-end dependencies
+    ```npm install```
+6. Generate application key (this will help with encryption and security)
+    ```php artisan key:generate```
+7. Create database
+    1. Open a terminal window, and access your MySQL
+    ```sudo mysql -u root -p;```
+    2. Create your database and assign permissions
+    ```CREATE DATABASE bloggist;```
+    ```CREATE USER 'bloggist'@'localhost' IDENTIFIED BY 'SET_YOUR_PASSWORD_HERE';```
+    ```ALTER USER 'bloggist'@'localhost' IDENTIFIED WITH mysql_native_password BY 'SET_YOUR_PASSWORD_HERE';```
+    ```GRANT ALL PRIVILEGES ON bloggist.* to 'bloggist'@'localhost' WITH GRANT OPTION;```
+    ```FLUSH PRIVILEGES;```
+    ```exit;```
+ 8. Add your database credentials to Bloggist.
+    Open your *.env* file, and modify the following lines
+    ```
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=bloggist
+    DB_USERNAME=bloggist
+    DB_PASSWORD=SET_YOUR_PASSWORD_HERE
+    ```
+9. Run migrations (this will create your database tables)
+    ```php artisan migrate```
+10. Generate front-end assets
+    ```npm run build``` or ```npm run dev``` if you want live reload
