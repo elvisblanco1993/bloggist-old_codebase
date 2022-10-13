@@ -6,7 +6,7 @@ Please read along to setup your own **Bloggist** instance.
 ## Before you start
 There are some things you will need before you can get started developing with **Bloggist**.
 
-- Apache/Nginx (You can also use [MAMP][mamp], which is available for both Mac OS and Windows)
+- Apache/Nginx (You can also use [MAMP][mamp] or [XAMPP][xampp], which are available for both Mac OS and Windows)
 - MySQL server (database server)
 - [VS Code][vscode] (code editor)
 - [Beekeeper Studio][beekeeper] (database management software)
@@ -20,6 +20,7 @@ There are some things you will need before you can get started developing with *
 [composer]: https://getcomposer.org/download/
 [npm]: https://nodejs.org/en/
 [mamp]: https://www.mamp.info
+[xampp]: https://www.apachefriends.org/
 
 ## Getting **Bloggist** up and running in your machine
 
