@@ -15,7 +15,16 @@ return new class extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->foreignId('user_id'); // author
+            $table->string('featured_image')->nullable();
+            $table->string('featured_image_credits')->nullable();
+            $table->string('title');
+            $table->string('slug');
+            $table->text('excerpt')->nullable();
+            $table->longText('body');
+            $table->timestamps(); // Creates created_at and updated_at fields
+            $table->timestamp('published_at')->nullable();
+            $table->softDeletes(); // When deleting, it will prevend DB deletion unless specified.
         });
     }
 
