@@ -36,6 +36,26 @@ class ArticleController extends Controller
             ]);
         }
     }
+    public function updateRating(Request $request)
+    {
+        request()->validate(['rate' => 'required']);
+
+        $post = Article::find($request->id);
+
+
+        $rating = new \willvincent\Rateable\Rating;
+
+        $rating->rating = $request->rate;
+
+        $rating->user_id = auth()->user()->id;
+
+
+        $post->ratings()->save($rating);
+
+
+        return redirect()->route("articles");
+
+    }
 
 
 }
