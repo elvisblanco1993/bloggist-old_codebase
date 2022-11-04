@@ -43,7 +43,8 @@ Route::middleware([
     /**
      * Update Blog Articles assumption Article is blog
      */
-    Route::put('/articles/update/{id}',App\Http\Livewire\Article\Update::class)->name('article.update');
+    Route::put('/articles/update/{id}',App\Http\Article\ArticleController::class)->name('article.update');
+    Route::put('/articles/update/{id}',App\Http\Article\ArticleController::class)->name('article.updateRating');
     /**
      *  Subscribers protected routes
      */
