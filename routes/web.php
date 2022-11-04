@@ -41,6 +41,10 @@ Route::middleware([
     Route::get('/article/{article}/edit', App\Http\Livewire\Article\Edit::class)->name('article.edit');
 
     /**
+     * Update Blog Articles assumption Article is blog
+     */
+    Route::put('/articles/update/{id}',App\Http\Livewire\Article\Update::class)->name('article.update');
+    /**
      *  Subscribers protected routes
      */
     Route::get('/subscribers', App\Http\Livewire\Subscriber\Index::class)->name('subscribers');
