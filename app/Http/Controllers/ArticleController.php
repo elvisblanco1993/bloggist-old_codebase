@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Article ;
+use \willvincent\Rateable\Rating;
 
 class ArticleController extends Controller
 {
@@ -43,7 +44,7 @@ class ArticleController extends Controller
         $post = Article::find($request->id);
 
 
-        $rating = new \willvincent\Rateable\Rating;
+        $rating = new Rating();
 
         $rating->rating = $request->rate;
 

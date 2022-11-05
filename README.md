@@ -40,7 +40,6 @@ There are some things you will need before you can get started developing with *
 
     ```composer install```
     
-   For Rateable run the following to publish the package
 
    ```php artisan vendor:publish --provider="willvincent\Rateable\RateableServiceProvider" --tag="migrations"```
    
