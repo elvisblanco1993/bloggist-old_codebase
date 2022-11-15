@@ -40,9 +40,15 @@ There are some things you will need before you can get started developing with *
 
     ```composer install```
     
+   For Rateable run the following to publish the package
 
    ```php artisan vendor:publish --provider="willvincent\Rateable\RateableServiceProvider" --tag="migrations"```
-   
+
+   For the Scout package run the following to publish it
+   ```php artisan vendor:publish --provider="Laravel\Scout\ScoutServiceProvider"```
+
+   Edit config\scout.php to change search driver settings accordingly
+
 ```php artisan migrate```
 
 5. Install front-end dependencies
@@ -92,3 +98,7 @@ There are some things you will need before you can get started developing with *
 10. Generate front-end assets
 
     ```npm run build``` or ```npm run dev``` if you want live reload
+
+11. Run Articles Search import for indexing
+
+    ```php artisan scout:import "App\Models\Article"```
