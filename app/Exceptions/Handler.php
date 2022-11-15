@@ -4,6 +4,9 @@ namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use Illuminate\Support\Arr;
+use Illuminate\Http\Response;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class Handler extends ExceptionHandler
 {
@@ -43,8 +46,27 @@ class Handler extends ExceptionHandler
      */
     public function register()
     {
-        $this->reportable(function (Throwable $e) {
-            //
+        $this->renderable(function(Exception $e, $request) {
+            return $this->handleException($request, $e);
         });
+    }
+
+    public function handleException($request, Throwable $e)
+    {
+        if ($e instanceof ModelNotFoundException) {
+            $replacement = [
+                'id' => collect($e->getIds())->first(),
+                'model' => Arr::last(explode('\\', $e->getModel())),
+            ];
+
+            $error = new Error(
+                help: trans('exception.model_not_found.help'),
+                error: trans('exception.model_not_found.error', $replacement)
+            );
+
+            return response($error->toArray(), Response::HTTP_NOT_FOUND);
+        }
+
+        return parent::render($request, $e);
     }
 }
