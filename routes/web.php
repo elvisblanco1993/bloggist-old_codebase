@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ArticleController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -43,8 +43,8 @@ Route::middleware([
     /**
      * Update Blog Articles
      */
-    Route::put('/articles/update/{id}',App\Http\Article\ArticleController::class)->name('article.update');
-    Route::put('/articles/update/{id}',App\Http\Article\ArticleController::class)->name('article.updateRating');
+    Route::put('/articles/update/{id}',[App\Http\Controllers\ArticleController::class,'update'])->name('article.update');
+    Route::put('/articles/update/{id}',[App\Http\Controllers\ArticleController::class,'updateRating'])->name('article.updateRating');
     /**
      *  Subscribers protected routes
      */
